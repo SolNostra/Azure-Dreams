@@ -1,0 +1,23 @@
+[gd_resource type="AnimationNodeBlendSpace1D" format=3 uid="uid://bhxftgabrx5lx"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wlsy"]
+animation = &"idle_loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b2kln"]
+animation = &"walk_loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_we0b7"]
+animation = &"idle_loop"
+
+[resource]
+min_space = 0.0
+max_space = 5.0
+blend_point_0/node = SubResource("AnimationNodeAnimation_3wlsy")
+blend_point_0/pos = -0.3
+blend_point_0/name = &"idle_loop"
+blend_point_1/node = SubResource("AnimationNodeAnimation_b2kln")
+blend_point_1/pos = 5.0
+blend_point_1/name = &"walk_loop"
+blend_point_2/node = SubResource("AnimationNodeAnimation_we0b7")
+blend_point_2/pos = 0.0
+blend_point_2/name = &"idle_loop 2"

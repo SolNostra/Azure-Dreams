@@ -5,8 +5,10 @@ var health_component : HealthComponent
 var stamina_component: StaminaComponent
 
 var movement_controller : MovementController
+var animation_controller : AnimationController
 var player_state : PlayerStateComponent
 
+var model : Node3D
 var collider : CollisionShape3D
 
 func _ready() -> void:
@@ -20,6 +22,8 @@ func register_components() -> void:
 	health_component = $Components/HealthComponent
 	stamina_component = $Components/StaminaComponent
 	movement_controller = $Components/MovementController
+	animation_controller = $Components/AnimationController
 	player_state = $Components/PlayerStateComponent
 	collider = $Collider
+	model = $Model
 	

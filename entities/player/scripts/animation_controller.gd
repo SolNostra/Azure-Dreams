@@ -15,7 +15,8 @@ func _process(_delta: float) -> void:
 func update_walking_animation() -> void:
 	if player_state.current_state == PlayerStateComponent.PlayerState.IDLE:
 		var blend_value := Vector2(player.velocity.x, player.velocity.z).length()
-		animation_tree.set("parameters/blend_position", blend_value)
+		animation_tree.set("parameters/IdleMove/blend_position", blend_value)
 
-func set_sitting_animation(_sitting: bool) -> void:
-	pass # remove later
+func set_animation(animation: String, state: bool) -> void:
+	animation_tree.set("parameters/conditions/" + animation, state)
+	print("Setting " + animation, "To ", state)

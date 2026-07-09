@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://entities/player/scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://cdluacu1s4i7w" path="res://entities/player/assets/armature.tscn" id="2_3wlsy"]
+[ext_resource type="AnimationNodeBlendSpace1D" uid="uid://bhxftgabrx5lx" path="res://entities/player/assets/animation/walk_blend.tres" id="2_b2kln"]
 [ext_resource type="Script" uid="uid://2iwliepr8wqu" path="res://entities/player/scripts/movement_controller.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://k286o6jtchjx" path="res://entities/player/scripts/collider.gd" id="3_j3ovn"]
 [ext_resource type="Script" uid="uid://dot65k8uek1xm" path="res://entities/player/scripts/camera_controller.gd" id="4_1jxqw"]
@@ -18,27 +19,27 @@
 [ext_resource type="Script" uid="uid://fr7avfnn5mix" path="res://entities/player/scripts/death_component.gd" id="11_afbqv"]
 [ext_resource type="Script" uid="uid://c7j0miur5c51t" path="res://entities/player/scripts/player_state/player_state_component.gd" id="13_yqrof"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wlsy"]
-animation = &"idle_loop"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b2kln"]
-animation = &"walk_loop"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_we0b7"]
-animation = &"idle_loop"
+animation = &"sitting_start"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3wlsy"]
-min_space = 0.0
-max_space = 5.0
-blend_point_0/node = SubResource("AnimationNodeAnimation_3wlsy")
-blend_point_0/pos = -0.3
-blend_point_0/name = &"idle_loop"
-blend_point_1/node = SubResource("AnimationNodeAnimation_b2kln")
-blend_point_1/pos = 5.0
-blend_point_1/name = &"walk_loop"
-blend_point_2/node = SubResource("AnimationNodeAnimation_we0b7")
-blend_point_2/pos = 0.0
-blend_point_2/name = &"idle_loop 2"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mtric"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eyb6c"]
+advance_mode = 2
+advance_condition = &"sitting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_221hk"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"standing"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5axk5"]
+states/IdleMove/node = ExtResource("2_b2kln")
+states/IdleMove/position = Vector2(403, 100)
+states/Sitting/node = SubResource("AnimationNodeAnimation_we0b7")
+states/Sitting/position = Vector2(403, 189)
+transitions = ["Start", "IdleMove", SubResource("AnimationNodeStateMachineTransition_mtric"), "IdleMove", "Sitting", SubResource("AnimationNodeStateMachineTransition_eyb6c"), "Sitting", "IdleMove", SubResource("AnimationNodeStateMachineTransition_221hk")]
 
 [sub_resource type="Animation" id="Animation_3wlsy"]
 resource_name = "ArmatureAction_002"
@@ -1705,9 +1706,11 @@ script = ExtResource("1_i3pqv")
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, -1.1665373, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Model" unique_id=779163806]
-tree_root = SubResource("AnimationNodeBlendSpace1D_3wlsy")
+tree_root = SubResource("AnimationNodeStateMachine_5axk5")
 anim_player = NodePath("../AnimationPlayer")
-parameters/blend_position = 5.0238094
+parameters/conditions/sitting = false
+parameters/conditions/standing = false
+parameters/IdleMove/blend_position = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model" unique_id=550052071]
 libraries/ = SubResource("AnimationLibrary_26q78")

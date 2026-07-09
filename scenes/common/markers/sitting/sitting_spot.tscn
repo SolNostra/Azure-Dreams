@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b4octlk7nw15v"]
+
+[ext_resource type="Script" uid="uid://gfbc4aisa3w4" path="res://scenes/mines/lift/bench/scripts/bench_interaction_area.gd" id="1_h8rhu"]
+[ext_resource type="Script" uid="uid://batspxhbmbiku" path="res://scenes/mines/lift/bench/scripts/on_interact.gd" id="2_m1d13"]
+
+[node name="SittingSpot" type="Area3D" unique_id=1348153757]
+collision_layer = 32
+script = ExtResource("1_h8rhu")
+
+[node name="OnInteract" type="Node" parent="." unique_id=713872630]
+script = ExtResource("2_m1d13")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="interacted" from="." to="OnInteract" method="_on_bench_interaction_area_interacted"]
