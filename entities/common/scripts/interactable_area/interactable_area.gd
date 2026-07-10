@@ -3,22 +3,16 @@ class_name InteractableArea
 
 signal interacted(interaction_state: bool)
 
-var player_in_area := false ## Is the player currently in the objects interaction radius?
-var is_interacted := false ## Is the object currently being interacted with?
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	
+	set_collision_layer_value(6, true)
+	set_collision_layer_value(1, false)
 
 func _on_body_entered(body: Node3D) -> void:
-	player_in_area = true
+	PlayerManager.player.interaction_controller.interactable_area_entered(self)
 
 func _on_body_exited(body: Node3D) -> void:
-	player_in_area = false
-
-func _input(event: InputEvent) -> void:
-	if !event.is_action_pressed("interact"):
-		return
-		
-	if !player_in_area: # wow this is poorly coded but who cares really, it's not like anyone will see this :eyes:
-		return
-	
-	is_interacted = !is_interacted
-	interacted.emit(is_interacted)
+	PlayerManager.player.interaction_controller.interactable_area_exited(self)
 	

@@ -27,6 +27,7 @@ PlayerManager="*uid://n875a11kc1gj"
 DialogueManager="*uid://c3rodes2l3gxb"
 DeathManager="*uid://ctx4icfqxr653"
 BgmManager="*uid://da44yhojbjkv0"
+NightManager="*uid://1epoo3swt5is"
 
 [dialogue_manager]
 

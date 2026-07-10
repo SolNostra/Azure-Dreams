@@ -6,6 +6,42 @@
 [ext_resource type="PackedScene" uid="uid://ntmvgech5k5f" path="res://entities/common/audio_player/audio_player.tscn" id="2_gvsf4"]
 [ext_resource type="Script" uid="uid://bovtjjderyyp5" path="res://entities/common/scripts/interactable_area/interactable_area.gd" id="4_0hnqr"]
 
+[sub_resource type="Curve" id="Curve_3gngh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_d0u6y"]
+curve = SubResource("Curve_3gngh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+lifetime_randomness = 0.6
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 100.0
+initial_velocity_max = 20.0
+scale_curve = SubResource("CurveTexture_d0u6y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+shading_mode = 0
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.20194969, 0.19220307, 0.18799967, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector2(0.5, 0.5)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hmvid"]
 height = 2.8728027
 radius = 2.9960938
@@ -490,48 +526,27 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Curve" id="Curve_3gngh"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
-
-[sub_resource type="CurveTexture" id="CurveTexture_d0u6y"]
-curve = SubResource("Curve_3gngh")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
-lifetime_randomness = 0.6
-emission_shape = 2
-emission_sphere_radius = 1.0
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_max = 20.0
-scale_curve = SubResource("CurveTexture_d0u6y")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
-blend_mode = 1
-shading_mode = 0
-specular_mode = 1
-disable_ambient_light = true
-disable_fog = true
-albedo_color = Color(0.8980392, 0.4509804, 0.023529412, 1)
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
-material = SubResource("StandardMaterial3D_57qmd")
-size = Vector2(0.5, 0.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(10, 5, 10)
 
 [node name="AzureDrill" type="Node3D" unique_id=1231543542]
 script = ExtResource("1_hmvid")
+progress_per_tick = 5
+
+[node name="ProgressTimer" type="Timer" parent="." unique_id=1116114852]
 
 [node name="AudioPlayer" parent="." unique_id=2043999297 instance=ExtResource("2_gvsf4")]
 volume_db = -80.0
 bus = &"Drill"
+
+[node name="ParticlesEmitter" type="GPUParticles3D" parent="." unique_id=1908109829]
+emitting = false
+amount = 20
+lifetime = 0.3
+explosiveness = 0.76
+randomness = 0.64
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("QuadMesh_yf5fn")
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=792626969]
 collision_layer = 20
@@ -684,15 +699,6 @@ mesh = SubResource("ArrayMesh_0hnqr")
 skin = SubResource("Skin_rcc7n")
 skeleton = NodePath("..")
 
-[node name="SparksEmitter" type="GPUParticles3D" parent="." unique_id=1908109829]
-emitting = false
-amount = 20
-lifetime = 0.3
-explosiveness = 0.76
-randomness = 0.64
-process_material = SubResource("ParticleProcessMaterial_g4v7s")
-draw_pass_1 = SubResource("QuadMesh_yf5fn")
-
 [node name="InteractableArea" type="Area3D" parent="." unique_id=1091770443]
 collision_layer = 32
 script = ExtResource("4_0hnqr")
@@ -702,7 +708,6 @@ metadata/_custom_type_script = "uid://bovtjjderyyp5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -0.5)
 shape = SubResource("BoxShape3D_g4v7s")
 
+[connection signal="timeout" from="ProgressTimer" to="." method="_on_progress_timer_timeout"]
 [connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
-[connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]
-[connection signal="body_exited" from="InteractableArea" to="InteractableArea" method="_on_body_exited"]
 [connection signal="interacted" from="InteractableArea" to="." method="_on_interactable_area_interacted"]

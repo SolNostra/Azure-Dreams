@@ -8,12 +8,13 @@
 [ext_resource type="Script" uid="uid://dot65k8uek1xm" path="res://entities/player/scripts/camera_controller.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_2hs0m"]
 [ext_resource type="Script" uid="uid://bv245g0c56qya" path="res://entities/player/scripts/animation_controller.gd" id="5_dw050"]
+[ext_resource type="PackedScene" uid="uid://gfckw7hi2o5s" path="res://ui/scenes/user_interface.tscn" id="5_we0b7"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_1jxqw"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_2hs0m"]
 [ext_resource type="Script" uid="uid://c4lnqytndylpd" path="res://entities/common/scripts/health_component/health_component.gd" id="6_bectd"]
 [ext_resource type="Script" uid="uid://sramyam137ou" path="res://entities/player/scripts/menu_input_component.gd" id="7_gx6sm"]
 [ext_resource type="Script" uid="uid://b0hng3ikukj0i" path="res://entities/player/scripts/interaction_controller.gd" id="7_yqrof"]
-[ext_resource type="Script" uid="uid://bd8c8fp8oc1tt" path="res://entities/player/dialogue_component.gd" id="8_7thud"]
+[ext_resource type="Script" uid="uid://bd8c8fp8oc1tt" path="res://entities/player/scripts/dialogue_component.gd" id="8_7thud"]
 [ext_resource type="Resource" uid="uid://bw355o07rxnkr" path="res://dialogue/testing.dialogue" id="9_a1qjk"]
 [ext_resource type="Script" uid="uid://fr7avfnn5mix" path="res://entities/player/scripts/death_component/death_component.gd" id="11_afbqv"]
 [ext_resource type="Script" uid="uid://c7j0miur5c51t" path="res://entities/player/scripts/player_state/player_state_component.gd" id="13_yqrof"]
@@ -1680,6 +1681,7 @@ height = 3.6876793
 script = ExtResource("6_1jxqw")
 
 [node name="Valentine" type="CharacterBody3D" unique_id=1386848412]
+process_priority = -1
 collision_mask = 118
 script = ExtResource("1_i3pqv")
 
@@ -1702,6 +1704,9 @@ autoplay = &"RESET"
 transform = Transform3D(0.99965185, 0, 0.026386317, 0, 1, 0, -0.026386317, 0, 0.99965185, 0, 0.6822796, 0)
 shape = SubResource("CapsuleShape3D_2c62f")
 script = ExtResource("3_j3ovn")
+
+[node name="UserInterfaceLayer" parent="." unique_id=1872480771 instance=ExtResource("5_we0b7")]
+unique_name_in_owner = true
 
 [node name="Components" type="Node" parent="." unique_id=1816780717]
 
@@ -1750,10 +1755,9 @@ health_component = NodePath("../HealthComponent")
 unique_name_in_owner = true
 script = ExtResource("13_yqrof")
 
-[node name="InteractionController" type="Node" parent="Components" unique_id=1480168796 node_paths=PackedStringArray("anim_controller")]
+[node name="InteractionController" type="Node" parent="Components" unique_id=1480168796]
 unique_name_in_owner = true
 script = ExtResource("7_yqrof")
-anim_controller = NodePath("../AnimationController")
 
 [node name="CameraNodes" type="Node" parent="." unique_id=1233003959]
 

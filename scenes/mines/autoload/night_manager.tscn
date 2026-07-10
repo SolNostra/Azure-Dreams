@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://1epoo3swt5is"]
+
+[ext_resource type="Script" uid="uid://bgjma4ccsmidf" path="res://scenes/mines/autoload/NightManager.gd" id="1_7bhy0"]
+
+[node name="NightManager" type="Node" unique_id=1260771376]
+script = ExtResource("1_7bhy0")
+
+[node name="Timer" type="Timer" parent="." unique_id=719353347]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

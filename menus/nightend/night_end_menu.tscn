@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://iabmnqd5exxc"]
+
+[ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_44n8g"]
+[ext_resource type="Script" uid="uid://b1yixdina67r7" path="res://menus/nightend/night_end_menu.gd" id="1_w3hsv"]
+[ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="2_w3hsv"]
+
+[node name="NightEndMenu" type="Control" unique_id=221632861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w3hsv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1258860712]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_left = -281.39542
+offset_top = -240.29117
+offset_right = 2350.2466
+offset_bottom = 1263.4205
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1418614352]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1261253742]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=907148551]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=486528132]
+custom_minimum_size = Vector2(1500, 350)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_44n8g")
+theme_override_font_sizes/normal_font_size = 124
+bbcode_enabled = true
+text = "[shake]another day at the mines..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndShiftButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1090269341]
+custom_minimum_size = Vector2(500, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_w3hsv")
+theme_override_font_sizes/font_size = 18
+text = "end shift"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/EndShiftButton" to="." method="_on_end_shift_button_pressed"]

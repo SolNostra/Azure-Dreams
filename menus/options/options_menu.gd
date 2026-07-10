@@ -61,3 +61,7 @@ func load_volumes() -> void:
 func _on_close_menu_button_pressed() -> void:
 	save_volumes()
 	queue_free()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_on_close_menu_button_pressed()

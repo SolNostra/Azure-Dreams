@@ -11,6 +11,7 @@ class_name Player
 @onready var interaction_controller: InteractionController = %InteractionController
 @onready var collider: CollisionShape3D = $Collider
 @onready var model: Node3D = $Model
+@onready var user_interface_layer: UserInterface = %UserInterfaceLayer
 
 func _ready() -> void:
 	PlayerManager.player = self
