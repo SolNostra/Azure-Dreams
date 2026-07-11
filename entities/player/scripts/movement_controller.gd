@@ -22,23 +22,20 @@ signal noclip_toggled(state: bool)
 var noclip_enabled := false
 
 func _physics_process(delta: float) -> void:
-	if player_state.current_state == player_state.PlayerState.BUSY:
-		player.velocity = Vector3.ZERO
-		return
-	
 	if !noclip_enabled:
 		player.velocity.y += -gravity * delta
 	
-	get_move_input(delta)
+	if player_state.current_state != player_state.PlayerState.BUSY:
+		get_move_input(delta)
 	
-	if noclip_enabled:
-		if Input.is_action_pressed("jump"):
-			player.velocity.y = jump_speed
-		elif Input.is_action_pressed("crouch"):
-			player.velocity.y = -jump_speed
-	else:
-		if Input.is_action_just_pressed("jump") and player.is_on_floor():
-			player.velocity.y = jump_speed
+		if noclip_enabled:
+			if Input.is_action_pressed("jump"):
+				player.velocity.y = jump_speed
+			elif Input.is_action_pressed("crouch"):
+				player.velocity.y = -jump_speed
+		else:
+			if Input.is_action_just_pressed("jump") and player.is_on_floor():
+				player.velocity.y = jump_speed
 	
 	player.move_and_slide()
 

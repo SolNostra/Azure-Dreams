@@ -1674,7 +1674,7 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2c62f"]
 radius = 0.34277344
-height = 3.6876793
+height = 3.2266521
 
 [sub_resource type="Resource" id="Resource_dw050"]
 script = ExtResource("6_1jxqw")
@@ -1685,7 +1685,7 @@ collision_mask = 118
 script = ExtResource("1_i3pqv")
 
 [node name="Model" type="Node3D" parent="." unique_id=1745203283]
-transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, 0, -1.1665373, 0)
+transform = Transform3D(-0.7, 0, -1.0569706e-07, 0, 0.7, 0, 1.0569706e-07, 0, -0.7, 0, -1.1665373, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Model" unique_id=779163806]
 tree_root = SubResource("AnimationNodeStateMachine_5axk5")
@@ -1700,7 +1700,7 @@ autoplay = &"RESET"
 [node name="Armature" parent="Model" unique_id=818338391 instance=ExtResource("2_3wlsy")]
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=254235498]
-transform = Transform3D(0.99965185, 0, 0.026386317, 0, 1, 0, -0.026386317, 0, 0.99965185, 0, 0.6822796, 0)
+transform = Transform3D(0.99965185, 0, 0.026386317, 0, 1, 0, -0.026386317, 0, 0.99965185, 0, 0.451766, 0)
 shape = SubResource("CapsuleShape3D_2c62f")
 script = ExtResource("3_j3ovn")
 

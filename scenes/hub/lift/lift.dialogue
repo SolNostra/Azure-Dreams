@@ -1,0 +1,6 @@
+~ start
+Lift: Begin your next shift?
+- Yes
+	do NightManager.start_night()
+- No => END
+=> END

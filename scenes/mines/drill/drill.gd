@@ -22,15 +22,17 @@ func start_drilling() -> void:
 	drilling = true
 	drilling_sfx.fade_in(2, -15)
 	beep_sfx.play()
+	
 	await get_tree().create_timer(1.5).timeout
-	particles_emitter.emitting = true
 	progress_timer.start(tick_duration)
+	particles_emitter.emitting = true
 
 func stop_drilling() -> void:
-	particles_emitter.emitting = false
 	drilling = false
-	beep_sfx.play()
 	drilling_sfx.fade_out(2)
+	beep_sfx.play()
+	
+	particles_emitter.emitting = false
 	progress_timer.stop()
 
 func _on_progress_timer_timeout() -> void:

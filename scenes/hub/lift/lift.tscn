@@ -1,16 +1,16 @@
-[gd_scene format=4 uid="uid://di5hu7x2ktysg"]
+[gd_scene format=4 uid="uid://db3chpdchhhig"]
 
-[ext_resource type="Script" uid="uid://2yc2ad1qymaf" path="res://scenes/mines/lift/scripts/lift.gd" id="1_klq6i"]
-[ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_l2n36"]
-[ext_resource type="Script" uid="uid://lp31yxk00541" path="res://scenes/mines/lift/scripts/door_open_collider.gd" id="1_w2aug"]
-[ext_resource type="Texture2D" uid="uid://coslk8m7aooh" path="res://scenes/mines/lift/assets/chainlink.png" id="2_fiob3"]
-[ext_resource type="Script" uid="uid://bbkotdpnbq1th" path="res://entities/common/dialogue_interactable/dialogue_interactable.gd" id="4_j6pb8"]
-[ext_resource type="Resource" uid="uid://dckcr7h1xd0b2" path="res://scenes/mines/lift/assets/lift.dialogue" id="5_or4ux"]
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="7_3g5yw"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_2br44"]
+[ext_resource type="Script" uid="uid://2yc2ad1qymaf" path="res://scenes/mines/lift/scripts/lift.gd" id="1_rmg76"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_va1k2"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_7y13f"]
+[ext_resource type="Script" uid="uid://bbkotdpnbq1th" path="res://entities/common/dialogue_interactable/dialogue_interactable.gd" id="4_i7vy5"]
+[ext_resource type="Resource" uid="uid://b064k33a8gj17" path="res://scenes/hub/lift/lift.dialogue" id="5_rmg76"]
+[ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="6_1x2ke"]
+[ext_resource type="Script" uid="uid://lp31yxk00541" path="res://scenes/mines/lift/scripts/door_open_collider.gd" id="7_3ys1o"]
+[ext_resource type="Texture2D" uid="uid://coslk8m7aooh" path="res://scenes/mines/lift/assets/chainlink.png" id="8_fcrau"]
 
 [sub_resource type="Resource" id="Resource_3g5yw"]
-script = ExtResource("8_2br44")
+script = ExtResource("3_7y13f")
 
 [sub_resource type="Animation" id="Animation_5b811"]
 resource_name = "DoorAction_002"
@@ -138,7 +138,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_fiob3")
+albedo_texture = ExtResource("8_fcrau")
 uv1_scale = Vector3(40, 40, 40)
 uv1_offset = Vector3(0.805, 0, 0)
 
@@ -214,13 +214,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lonop")
 
-[node name="lift" type="Node3D" unique_id=1271380155]
-transform = Transform3D(-0.7, 0, -1.0569706e-07, 0, 0.7, 0, 1.0569706e-07, 0, -0.7, 0, 0, 0)
-script = ExtResource("1_klq6i")
+[node name="lift" type="Node3D" unique_id=639055863]
+transform = Transform3D(-7.5099095e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -7.5099095e-08, 0, 0, 0)
+script = ExtResource("1_rmg76")
 
-[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1795223228 node_paths=PackedStringArray("look_at_target")]
-transform = Transform3D(1, -1.5248915e-15, 9.76646e-15, 0, 0.9880293, 0.15426648, -9.884789e-15, -0.15426648, 0.9880293, 1.2404511e-06, 5.5683885, -8.215137)
-script = ExtResource("7_3g5yw")
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1694125630 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(5.9604613e-08, -0.11207574, 0.9936991, 0, 0.99369967, 0.11207568, -0.9999994, 0, 5.9604613e-08, -1.717216e-06, 5.5683885, 11.372606)
+script = ExtResource("2_va1k2")
 look_at_mode = 2
 look_at_target = NodePath("../Body/Marker3D")
 tween_resource = SubResource("Resource_3g5yw")
@@ -228,87 +228,87 @@ align_transform_with_view = Callable()
 align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=331792171]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=311788831]
 libraries/ = SubResource("AnimationLibrary_wrrtb")
 
-[node name="DialogueInteractable" type="Area3D" parent="." unique_id=353772421]
+[node name="DialogueInteractable" type="Area3D" parent="." unique_id=2132282714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.628332e-07, 0, 5.714286)
-script = ExtResource("4_j6pb8")
-dialogue_resource = ExtResource("5_or4ux")
+script = ExtResource("4_i7vy5")
+dialogue_resource = ExtResource("5_rmg76")
 metadata/_custom_type_script = "uid://bbkotdpnbq1th"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" unique_id=1275526443]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" unique_id=406228362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.828505e-07, 3.3358002, -5.846854)
 shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="Body" type="Node3D" parent="." unique_id=1856842920]
+[node name="Body" type="Node3D" parent="." unique_id=1475442367]
 
-[node name="Door" type="Node3D" parent="Body" unique_id=1566564151]
+[node name="Door" type="Node3D" parent="Body" unique_id=2095360435]
 transform = Transform3D(1.4285713, 0, 0, 0, 1.4285716, 0, 2.842171e-14, 0, 1.4285715, -0.089357235, -0.11575805, 0.007920125)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Body/Door" unique_id=1530792422]
+[node name="Skeleton3D" type="Skeleton3D" parent="Body/Door" unique_id=1967142816]
 bones/0/name = "DOOR_CONTROL"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14233908, 2.34283)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -0.29499137, 2.34283)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/position = Vector3(0, -0.29499137, 1.7875595)
+bones/0/rotation = Quaternion(0.7452425, 0, 1.0451265e-07, 0.6667936)
 bones/0/scale = Vector3(1, 1, 1)
 
-[node name="Door " type="MeshInstance3D" parent="Body/Door/Skeleton3D" unique_id=631456491]
+[node name="Door " type="MeshInstance3D" parent="Body/Door/Skeleton3D" unique_id=697898889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01651049, 0.0174613, 0.012214184)
-material_override = ExtResource("1_l2n36")
+material_override = ExtResource("6_1x2ke")
 mesh = SubResource("ArrayMesh_7dq8f")
 skin = SubResource("Skin_ao144")
 skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Door/Skeleton3D" unique_id=188476450]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29499137, 2.34283)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Door/Skeleton3D" unique_id=2047904607]
+transform = Transform3D(1, -1.3937672e-07, 1.5577453e-07, 1.3937672e-07, -0.11077273, -0.9938458, 1.5577453e-07, 0.9938458, -0.11077273, 0, -0.29499137, 1.7875595)
 bone_name = "DOOR_CONTROL"
 bone_idx = 0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Body/Door/Skeleton3D/BoneAttachment3D" unique_id=963501369]
+[node name="StaticBody3D" type="StaticBody3D" parent="Body/Door/Skeleton3D/BoneAttachment3D" unique_id=535586296]
 physics_interpolation_mode = 1
 transform = Transform3D(-1.428534, -0.010297696, -0.00040688316, -0.010296313, 1.428527, -0.0046616034, 0.00044048388, -0.004658549, -1.428564, 0.0903313, 0.028855987, -4.3958206)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Door/Skeleton3D/BoneAttachment3D/StaticBody3D" unique_id=248132128]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Door/Skeleton3D/BoneAttachment3D/StaticBody3D" unique_id=1244015703]
 transform = Transform3D(-0.6999819, -0.0050451946, 0.00021583187, -0.005045871, 0.699978, -0.0022826889, -0.0001993781, -0.0022841853, -0.6999963, 0.050760306, 0.19340716, -1.6801175)
 shape = SubResource("ConcavePolygonShape3D_fiob3")
 
-[node name="DoorOpenCollider" type="Area3D" parent="Body/Door" unique_id=159066868 node_paths=PackedStringArray("anim_player")]
+[node name="DoorOpenCollider" type="Area3D" parent="Body/Door" unique_id=378418910 node_paths=PackedStringArray("anim_player")]
 transform = Transform3D(0.70000005, 0, 7.1054274e-15, 0, 0.6999999, 0, 0, 0, 0.7, 0.062550016, 0.08103062, 4.3490825)
 collision_layer = 64
-script = ExtResource("1_w2aug")
+script = ExtResource("7_3ys1o")
 anim_player = NodePath("../../../AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Door/DoorOpenCollider" unique_id=829049592]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Door/DoorOpenCollider" unique_id=348075568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23746e-08, 1.4351808, 3.137053)
 shape = SubResource("BoxShape3D_yf5fn")
 
-[node name="Lift" type="MeshInstance3D" parent="Body" unique_id=482172020]
+[node name="Lift" type="MeshInstance3D" parent="Body" unique_id=1930174506]
 transform = Transform3D(1.4285713, 0, 0, 0, 1.4285716, 0, 2.842171e-14, 0, 1.4285715, 0, 0, 0)
-material_override = ExtResource("1_l2n36")
+material_override = ExtResource("6_1x2ke")
 mesh = SubResource("ArrayMesh_kbqjr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Body/Lift" unique_id=1424809146]
+[node name="StaticBody3D" type="StaticBody3D" parent="Body/Lift" unique_id=202143663]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Lift/StaticBody3D" unique_id=405966309]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Lift/StaticBody3D" unique_id=757025022]
 shape = SubResource("ConcavePolygonShape3D_l2n36")
 
-[node name="Window" type="MeshInstance3D" parent="Body" unique_id=1467207927]
+[node name="Window" type="MeshInstance3D" parent="Body" unique_id=1538747758]
 transform = Transform3D(1.4285713, 0, 0, 0, 1.4285716, 0, 2.842171e-14, 0, 1.4285715, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kng3i")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_76x57")
 
-[node name="Cable" type="MeshInstance3D" parent="Body" unique_id=1621402604]
+[node name="Cable" type="MeshInstance3D" parent="Body" unique_id=1758793359]
 transform = Transform3D(1.4285713, 0, 0, 0, 17.954426, 0, 2.842171e-14, 0, 1.4285715, 0, -81.813416, 0)
-material_override = ExtResource("1_l2n36")
+material_override = ExtResource("6_1x2ke")
 mesh = SubResource("ArrayMesh_qsr2j")
 
-[node name="Marker3D" type="Marker3D" parent="Body" unique_id=1784602555]
+[node name="Marker3D" type="Marker3D" parent="Body" unique_id=866987379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.285714, 0)
 
 [connection signal="body_entered" from="Body/Door/DoorOpenCollider" to="Body/Door/DoorOpenCollider" method="_on_body_entered"]

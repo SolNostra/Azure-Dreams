@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://lpd2cdwoqt7e"]
+
+[ext_resource type="Script" uid="uid://dpot73eytg44c" path="res://scenes/hub/lift/lift.gd" id="2_vaw7m"]
+[ext_resource type="PackedScene" uid="uid://db3chpdchhhig" path="res://scenes/hub/lift/lift.tscn" id="2_ydya3"]
+[ext_resource type="PackedScene" uid="uid://c0hbapxqnhbh7" path="res://scenes/hub/hub_model.tscn" id="3_vaw7m"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://entities/player/player.tscn" id="3_ydya3"]
+
+[node name="HubArea" type="Node3D" unique_id=1953127663]
+
+[node name="lift" parent="." unique_id=484407161 instance=ExtResource("2_ydya3")]
+transform = Transform3D(-1.14044475e-07, 0, 0.7, 0, 0.7, 0, -0.7, 0, -1.14044475e-07, -18, 0.40395403, 0)
+script = ExtResource("2_vaw7m")
+
+[node name="Valentine" parent="." unique_id=1386848412 instance=ExtResource("3_ydya3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.3657603, 0)
+
+[node name="HubModel" parent="." unique_id=2138746100 instance=ExtResource("3_vaw7m")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1618798521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.04121, 0)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 10.492
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=867753515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.560314, 11.04121, 0)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 10.492
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1853112757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.986298, 11.04121, 0)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 10.492
