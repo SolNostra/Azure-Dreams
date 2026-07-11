@@ -30,6 +30,7 @@ BgmManager="*uid://da44yhojbjkv0"
 NightManager="*uid://1epoo3swt5is"
 ObjectiveManager="*uid://tx5m4uab8vt6"
 AzureManager="*uid://bsob04lftjkrn"
+LoadingManager="*uid://dxqthi8thtwsk"
 
 [dialogue_manager]
 

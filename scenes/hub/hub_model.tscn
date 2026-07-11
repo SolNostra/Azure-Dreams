@@ -3,7 +3,6 @@
 [ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_c4oxy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uvntu"]
-load_path = "res://.godot/imported/newhub_Gradient Pallete.png-067985880abf2a87bab4c628a923579f.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v35o8"]
 resource_name = "Palette"
