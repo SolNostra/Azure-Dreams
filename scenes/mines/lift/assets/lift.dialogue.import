@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dckcr7h1xd0b2"
+path="res://.godot/imported/lift.dialogue-67add1a3f57d618d2b43d3ce708853dd.tres"
+
+[deps]
+
+source_file="res://scenes/mines/lift/assets/lift.dialogue"
+dest_files=["res://.godot/imported/lift.dialogue-67add1a3f57d618d2b43d3ce708853dd.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,9 @@
+~ start
+Lift: Return to the surface?
+- Yes
+	if !NightManager.can_end_night
+		Lift: Get back to work!!!!
+	else
+		do NightManager.end_night()
+- No => END
+=> END

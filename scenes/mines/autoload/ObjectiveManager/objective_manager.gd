@@ -3,11 +3,22 @@ extends Node
 signal objective_created(objective)
 const objectives_folder := "res://scenes/mines/shift_objectives/"
 
+var objectives_complete := false
+signal all_objectives_completed
+
+var current_objectives : Array[Objective]
+
 func _ready() -> void:
 	NightManager.night_started.connect(_on_night_started)
 
 func _on_night_started() -> void:
 	load_objectives(1) # Later, check the save data to see what night we are on.
+
+func _on_objective_fulfilled(objective: Objective) -> void:
+	objective.objective_fulfilled = true
+	if check_objectives_complete():
+		objectives_complete = true
+		all_objectives_completed.emit()
 
 func load_objectives(shift: int) -> void:
 	var target_path = objectives_folder + str(shift)
@@ -23,4 +34,13 @@ func load_objectives(shift: int) -> void:
 		
 
 func create_objective(objective: Objective) -> void:
+	objective.objective_condition.setup_objective()
 	objective_created.emit(objective)
+	objective.objective_condition.objective_fulfilled.connect(_on_objective_fulfilled.bind(objective))
+
+func check_objectives_complete() -> bool:
+	for objective in current_objectives:
+		if !objective.objective_fulfilled:
+			return false
+		
+	return true

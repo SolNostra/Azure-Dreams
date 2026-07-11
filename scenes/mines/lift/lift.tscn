@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://di5hu7x2ktysg"]
 
+[ext_resource type="Script" uid="uid://2yc2ad1qymaf" path="res://scenes/mines/lift/scripts/lift.gd" id="1_klq6i"]
 [ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_l2n36"]
 [ext_resource type="Script" uid="uid://lp31yxk00541" path="res://scenes/mines/lift/scripts/door_open_collider.gd" id="1_w2aug"]
 [ext_resource type="Texture2D" uid="uid://coslk8m7aooh" path="res://scenes/mines/lift/assets/chainlink.png" id="2_fiob3"]
+[ext_resource type="Script" uid="uid://bbkotdpnbq1th" path="res://entities/common/dialogue_interactable/dialogue_interactable.gd" id="4_j6pb8"]
+[ext_resource type="Resource" uid="uid://dckcr7h1xd0b2" path="res://scenes/mines/lift/assets/lift.dialogue" id="5_or4ux"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fiob3"]
 
@@ -203,8 +206,12 @@ _data = {
 &"door_open": SubResource("Animation_qyr2t")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(5, 7.6716003, 6.217285)
+
 [node name="lift" type="Node3D" unique_id=1271380155]
 transform = Transform3D(-0.7, 0, -1.0569706e-07, 0, 0.7, 0, 1.0569706e-07, 0, -0.7, 0, 0, 0)
+script = ExtResource("1_klq6i")
 
 [node name="Lift" type="MeshInstance3D" parent="." unique_id=482172020]
 transform = Transform3D(1.4285713, 0, 0, 0, 1.4285716, 0, 1.4210855e-14, 0, 1.4285715, 0, 0, 0)
@@ -273,6 +280,16 @@ shape = SubResource("BoxShape3D_yf5fn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=331792171]
 libraries/ = SubResource("AnimationLibrary_wrrtb")
+
+[node name="DialogueInteractable" type="Area3D" parent="." unique_id=353772421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.628332e-07, 0, 5.714286)
+script = ExtResource("4_j6pb8")
+dialogue_resource = ExtResource("5_or4ux")
+metadata/_custom_type_script = "uid://bbkotdpnbq1th"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" unique_id=1275526443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.828505e-07, 3.3358002, -5.846854)
+shape = SubResource("BoxShape3D_g4v7s")
 
 [connection signal="body_entered" from="Door -col_001/DoorOpenCollider" to="Door -col_001/DoorOpenCollider" method="_on_body_entered"]
 [connection signal="body_exited" from="Door -col_001/DoorOpenCollider" to="Door -col_001/DoorOpenCollider" method="_on_body_exited"]

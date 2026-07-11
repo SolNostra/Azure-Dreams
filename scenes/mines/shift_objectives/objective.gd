@@ -6,3 +6,4 @@ class_name Objective
 @export var objective_description := "Maintain the drill until the Azure tanks are full."
 
 @export var objective_condition : ObjectiveCondition
+@export var objective_fulfilled := false
